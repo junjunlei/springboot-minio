@@ -1,0 +1,8 @@
+minio:
+  endpoint: http://101.35.8.125
+  port: 9000
+  accessKey: root
+  secretKey: root123456$%^
+  bucketName: public-bucket
+  secure: false
+
