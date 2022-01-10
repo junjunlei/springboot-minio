@@ -1,6 +1,7 @@
 package com.jerry.minio;
 
 import com.jerry.minio.util.MinioUtils;
+import io.minio.MinioClient;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,12 +18,18 @@ class SpringbootMinioApplicationTests {
     @Autowired
     private MinioUtils minioUtils;
 
+    @Autowired
+    private MinioClient minioClient;
+
     @Test
     void contextLoads() throws Exception {
-        minioUtils.createBucket("public-bucket");
-        minioUtils.uploadFile("public-bucket","background",new FileInputStream("background.jpg"),"image/jpeg");
+//        minioUtils.createBucket("public-bucket");
+//        minioUtils.uploadFile("public-bucket","background",new FileInputStream("background.jpg"),"image/jpeg");
         //boolean b = minioUtils.bucketExists("123123");
         //System.out.println("api返回结果为: "+b);
+
+        String background = minioClient.getObjectUrl("public-bucket", "background");
+        System.out.println("api返回结果为: "+background);
     }
 
 
